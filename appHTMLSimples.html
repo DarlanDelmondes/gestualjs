@@ -1,0 +1,38 @@
+<html>
+
+	<head>
+
+	</head>
+
+	<body>
+	
+			<canvas id="canvas1" width="438px" height="302px" style="border: 1px solid #444"></canvas>
+
+			<video autoplay id="vid" style="display:none;"></video>
+			<canvas id="canvasCam" width="438px" height="302px" style="border:1px solid #d3d3d3;"></canvas><br>
+		
+			<script src="gestual.js" type="text/javascript"></script>
+		
+			<script type="text/javascript">
+		
+				var gestual = new Gestual();
+				gestual.onHandUp = function(){
+					document.querySelector("h1").innerHTML = "cima!";
+				};
+				gestual.onHandDown = function(){
+					document.querySelector("h1").innerHTML = "baixo!";
+				};
+				gestual.onHandLeft = function(){
+					document.querySelector("h1").innerHTML = "esquerda!";
+				};				
+				gestual.onHandRight = function(){
+					document.querySelector("h1").innerHTML = "right!";
+				};								
+			
+			</script>
+		
+			<h1></h1>
+			
+	</body>
+
+</html>
