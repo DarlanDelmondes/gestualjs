@@ -6,15 +6,15 @@
 <pre>
 script type="text/javascript" src="gestual.js"
 </pre>
-<p>Após importar o arquivo <i>JavaScript</i> veja alguns exemplos para começar a usar o GestualJS:</p>
+<p>Após importar o arquivo <i>JavaScript</i> no documento HTML veja alguns exemplos para começar a usar o GestualJS:</p>
 <pre>
 var gestual = new Gestual()
 </pre>
 <pre>
-gestual.onHandUp = function(){ ... };
+gestual.onHandUp = function(){ ... }
 </pre>
 <pre>
-gestual.onHandRight = function(){ alert("Mão para direita"); };
+gestual.onHandRight = function(){ alert("Mão para direita"); }
 </pre>
 
 <h2>Finalidades</h2>
