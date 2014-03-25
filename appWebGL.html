@@ -1,0 +1,144 @@
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="x3dom.css"></link>
+		<script type="text/javascript" src="x3dom.js"></script>
+
+		<script>
+		
+			var obj;
+			var animTime, cAnimTime=0;
+
+			function moveRight(){
+				limit=10;
+				obj = document.querySelector("#tCubo");
+				clearInterval(animTime);				
+				animTime = setInterval( function(){
+					console.log("Antes: " + getRotationX(obj));
+					setRotationX(obj, parseFloat(getRotationX(obj)) - 0.15);
+					console.log("Depois: " + getRotationX(obj));	
+					cAnimTime++;
+					if (cAnimTime > limit){ 
+						clearInterval(animTime);
+						cAnimTime = 0;
+					}
+				}, 10);
+			}
+
+			function moveLeft(){
+				limit=10;
+				obj = document.querySelector("#tCubo");
+				clearInterval(animTime);				
+				animTime = setInterval( function(){
+					console.log("Antes: " + getRotationX(obj));
+					setRotationX(obj, parseFloat(getRotationX(obj)) + 0.15);
+					console.log("Depois: " + getRotationX(obj));	
+					cAnimTime++;
+					if (cAnimTime > limit){ 
+						clearInterval(animTime);
+						cAnimTime = 0;
+					}
+				}, 10);
+			}
+						
+			function moveUp(){
+				limit=10;
+				obj = document.querySelector("#tCubo");
+				clearInterval(animTime);				
+				animTime = setInterval( function(){
+					console.log("Antes: " + getRotationY(obj));
+					setRotationY(obj, parseFloat(getRotationY(obj)) - 0.15);
+					console.log("Depois: " + getRotationY(obj));	
+					cAnimTime++;
+					if (cAnimTime > limit){ 
+						clearInterval(animTime);
+						cAnimTime = 0;
+					}
+				}, 10);
+			}
+
+			function moveDown(){
+				limit = 10;
+				obj = document.querySelector("#tCubo");
+				clearInterval(animTime);				
+				animTime = setInterval( function(){
+					console.log("Antes: " + getRotationY(obj));
+					setRotationY(obj, parseFloat(getRotationY(obj)) + 0.15);
+					console.log("Depois: " + getRotationY(obj));	
+					cAnimTime++;
+					if (cAnimTime > limit){ 
+						clearInterval(animTime);
+						cAnimTime = 0;
+					}
+				}, 10);
+			}
+
+			function getRotationY(obj){
+				return obj.getAttribute("rotation").split(" ")[3];
+			}
+
+			function setRotationY(obj, value){
+				obj.setAttribute("rotation","1 " + getRotationX(obj) + " 0 " + value);
+			}
+
+			function getRotationX(obj){
+				return obj.getAttribute("rotation").split(" ")[1];
+			}
+
+			function setRotationX(obj, value){
+				console.log("1 0 " + value + " 0 " + getRotationY(obj) );
+				obj.setAttribute("rotation","1 " + value + " 0 " + getRotationY(obj) );
+			}			
+			
+		</script>
+		
+	</head>
+
+	<body>
+
+		<x3d width="600px" height="400px" style="border: none;">
+			<Scene> 
+				<Transform id="tCubo" translation='0 0 0' rotation="1 0 0 1" onClick="javascript: alert()">
+					<Shape>
+						<Appearance> 
+							<Material diffuseColor='1 1 0' /> 
+						</Appearance> 
+						<Box size='1 2 2'/> 
+					</Shape> 
+				</Transform>
+			</Scene> 
+		</x3d>
+
+		<canvas id="canvas1" width="438px" height="302px" style="border: 1px solid #444; border: none; position: absolute; visibility:hidden"></canvas>
+
+		<video autoplay id="vid" style="display:none;position: absolute; visibility:hidden"></video>
+		<canvas id="canvasCam" width="438px" height="302px" style="border:1px solid #d3d3d3;position: absolute; visibility:hidden"></canvas><br>
+
+		<script src="gestual.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+
+			var gestual = new Gestual();
+			gestual.onHandUp = function(){
+
+				moveUp();				
+			};
+			gestual.onHandDown = function(){
+
+				moveDown();
+
+			};
+			gestual.onHandLeft= function(){
+
+				moveLeft();				
+			};
+			gestual.onHandRight = function(){
+
+				moveRight();				
+			};
+	
+		</script>
+		
+	</body>
+
+</html>
