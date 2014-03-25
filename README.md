@@ -1,2 +1,2 @@
-gestualjs
+Gestual.js
 =========
